@@ -2,7 +2,7 @@
 Element Fire
 {
 	weak = ;
-	strong = Water;
+	strong = Water Earth;
 };
 
 Element Water
@@ -20,7 +20,7 @@ Element Earth
 Card Zuko
 {
 	power = 1 + 5 / 2 + 4 * 3;
-	elements = Fire;
+	elements = Fire Earth;
 };
 
 Card Katara

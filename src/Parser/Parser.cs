@@ -173,12 +173,12 @@ public class Parser
 
     private Expression? ParseExpression()
     {
-        return ParseExpressionLv1(null);
+        return ParseExpressionLv1();
     }
 
-   private Expression? ParseExpressionLv1(Expression? left)
+   private Expression? ParseExpressionLv1()
     {
-        Expression? newLeft = ParseExpressionLv2(left);
+        Expression? newLeft = ParseExpressionLv2();
         Expression? exp = ParseExpressionLv1_(newLeft);
         return exp;
     }
@@ -198,9 +198,9 @@ public class Parser
         return left;
     }
 
-    private Expression? ParseExpressionLv2(Expression? left)
+    private Expression? ParseExpressionLv2()
     {
-        Expression? newLeft = ParseExpressionLv3(left);
+        Expression? newLeft = ParseExpressionLv3();
         return ParseExpressionLv2_(newLeft);
     }
     private Expression? ParseExpressionLv2_(Expression? left)
@@ -218,7 +218,7 @@ public class Parser
         return left;
     }
 
-    private Expression? ParseExpressionLv3(Expression? left)
+    private Expression? ParseExpressionLv3()
     {
         Expression? exp = ParseNumber();
         if(exp != null)
@@ -243,7 +243,7 @@ public class Parser
         
         sum.Left = left;
 
-        Expression? right = ParseExpressionLv2(null);
+        Expression? right = ParseExpressionLv2();
         if(right == null)
         {
             Stream.MoveBack(2);
@@ -263,7 +263,7 @@ public class Parser
         
         sub.Left = left;
 
-        Expression? right = ParseExpressionLv2(null);
+        Expression? right = ParseExpressionLv2();
         if(right == null)
         {
             Stream.MoveBack(2);
@@ -283,7 +283,7 @@ public class Parser
         
         mul.Left = left;
 
-        Expression? right = ParseExpressionLv3(null);
+        Expression? right = ParseExpressionLv3();
         if(right == null)
         {
             Stream.MoveBack(2);
@@ -303,7 +303,7 @@ public class Parser
         
         div.Left = left;
 
-        Expression? right = ParseExpressionLv3(null);
+        Expression? right = ParseExpressionLv3();
         if(right == null)
         {
             Stream.MoveBack(2);

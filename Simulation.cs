@@ -2,8 +2,8 @@
 public class Ring{
     public void Fight(ElementalProgram program, Card player1, Card player2)
     {
-        double pow1 = (double)player1.Power.Value;
-        double pow2 = (double)player2.Power.Value;
+        double pow1 = (double)player1.Power!.Value!;
+        double pow2 = (double)player2.Power!.Value!;
 
         foreach (string element1 in player1.cardElements)
         {
