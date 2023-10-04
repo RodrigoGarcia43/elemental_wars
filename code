@@ -1,0 +1,31 @@
+
+Element Fire
+{
+	weak = ;
+	strong = Water;
+};
+
+Element Water
+{
+	weak = ;
+	strong = Fire;
+}; 
+
+Element Earth
+{
+	weak = ;
+	strong = Fire;
+}; 
+
+Card Zuko
+{
+	power = 1 + 5 / 2 + 4 * 3;
+	elements = Fire;
+};
+
+Card Katara
+{
+	power = 15;
+	elements = Water;
+};
+

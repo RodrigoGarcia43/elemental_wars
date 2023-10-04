@@ -1,0 +1,15 @@
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.csproj.AssemblyReference.cache
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.GeneratedMSBuildEditorConfig.editorconfig
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.AssemblyInfoInputs.cache
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.AssemblyInfo.cs
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.csproj.CoreCompileInputs.cache
+/home/rodrigo/Projects/elemental-wars/bin/Debug/net6.0/elemental-wars
+/home/rodrigo/Projects/elemental-wars/bin/Debug/net6.0/elemental-wars.deps.json
+/home/rodrigo/Projects/elemental-wars/bin/Debug/net6.0/elemental-wars.runtimeconfig.json
+/home/rodrigo/Projects/elemental-wars/bin/Debug/net6.0/elemental-wars.dll
+/home/rodrigo/Projects/elemental-wars/bin/Debug/net6.0/ref/elemental-wars.dll
+/home/rodrigo/Projects/elemental-wars/bin/Debug/net6.0/elemental-wars.pdb
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.dll
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/ref/elemental-wars.dll
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.pdb
+/home/rodrigo/Projects/elemental-wars/obj/Debug/net6.0/elemental-wars.genruntimeconfig.cache
