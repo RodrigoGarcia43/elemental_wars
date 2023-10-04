@@ -148,7 +148,7 @@ public class Parser
         }
         while(Stream.Next(TokenType.Identifier))
         {
-            card.cardElements.Add(Stream.LookAhead().Value);
+            card.Elements.Add(Stream.LookAhead().Value);
         }
         if(!Stream.Next(TokenValues.StatementSeparator))
         {

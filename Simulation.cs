@@ -5,9 +5,9 @@ public class Ring{
         double pow1 = (double)player1.Power!.Value!;
         double pow2 = (double)player2.Power!.Value!;
 
-        foreach (string element1 in player1.cardElements)
+        foreach (string element1 in player1.Elements)
         {
-            foreach (string element2 in player2.cardElements)
+            foreach (string element2 in player2.Elements)
             {
                 int factor = Calculate(program, element1, element2);
                 pow1 += factor * 20;

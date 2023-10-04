@@ -1,12 +1,13 @@
 
 public class Context
 {
-    public List<string> elements;
-    public List<string> cards;
-
     public Context()
     {
-        elements = new List<string>();
-        cards = new List<string>();
+        Elements = new List<string>();
+        Cards = new List<string>();
     }
+
+    public List<string> Elements { get; set; }
+
+    public List<string> Cards { get; set; }
 }

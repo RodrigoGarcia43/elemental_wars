@@ -1,13 +1,14 @@
 
 public class Scope
 {
-    public Scope? Parent;
-    public List<string> elements;
-
     public Scope()
     {
-        elements = new List<string>();   
+        Elements = new List<string>();   
     }
+
+    public Scope? Parent { get; set; }
+
+    public List<string> Elements { get; set; }
 
     public Scope CreateChild()
     {

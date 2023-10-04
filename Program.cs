@@ -1,5 +1,5 @@
 ﻿
-LexicalAnalyzer lex = Compiling.Lexical;
+LexicalAnalyzer lex = Lexer.LexicalAnalyzer;
 
 string text = File.ReadAllText("./examples/code");  
 
