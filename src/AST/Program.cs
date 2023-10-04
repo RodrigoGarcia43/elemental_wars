@@ -1,17 +1,18 @@
 
 public class ElementalProgram : ASTNode
 {
-    public List<CompilingError> Errors {get; set;}
-    public Dictionary<string, Element> Elements {get; set;}
-    public Dictionary<string, Card> Cards {get; set;}
-
-
     public ElementalProgram(CodeLocation location) : base (location)
     {
         Errors = new List<CompilingError>();
         Elements = new Dictionary<string, Element>();
         Cards = new Dictionary<string, Card>();
     }
+
+    public List<CompilingError> Errors { get; set; }
+
+    public Dictionary<string, Element> Elements { get; set; }
+
+    public Dictionary<string, Card> Cards { get; set; }
 
     public override bool CheckSemantic(Context context, Scope scope, List<CompilingError> errors)
     {
@@ -37,9 +38,7 @@ public class ElementalProgram : ASTNode
     public void Evaluate()
     {
         foreach (Card card in Cards.Values)
-        {
             card.Evaluate();
-        }
     }
 
     public override string ToString()

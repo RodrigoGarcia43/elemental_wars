@@ -1,13 +1,14 @@
 
-public class Ring{
+public class Ring 
+{
     public void Fight(ElementalProgram program, Card player1, Card player2)
     {
         double pow1 = (double)player1.Power!.Value!;
         double pow2 = (double)player2.Power!.Value!;
 
-        foreach (string element1 in player1.cardElements)
+        foreach (string element1 in player1.Elements)
         {
-            foreach (string element2 in player2.cardElements)
+            foreach (string element2 in player2.Elements)
             {
                 int factor = Calculate(program, element1, element2);
                 pow1 += factor * 20;
@@ -56,14 +57,6 @@ public class Ring{
         if(program.Elements[element1].Strong.Contains(element2))
         {
             result += 1;
-        }
-        if(program.Elements[element2].Weak.Contains(element1))
-        {
-            result += 1;
-        }
-        if(program.Elements[element2].Weak.Contains(element1))
-        {
-            result -= 1;
         }
 
         return result;

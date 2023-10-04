@@ -1,47 +1,41 @@
 ﻿
 public class LexicalAnalyzer
 {
-    Dictionary<string, string> operators = new Dictionary<string, string>();
-    Dictionary<string, string> keywords = new Dictionary<string, string>();
-    Dictionary<string, string> texts = new Dictionary<string, string>();
-
-    public IEnumerable<string> Keywords { get { return keywords.Keys; } }
-
-    public void RegisterOperator(string op, string tokenValue)
+    public LexicalAnalyzer() 
     {
-        this.operators[op] = tokenValue;
+        Operators = new Dictionary<string, string>();
+        KeyWords = new Dictionary<string, string>();
+        Texts = new Dictionary<string, string>();
     }
 
-    public void RegisterKeyword(string keyword, string tokenValue)
-    {
-        this.keywords[keyword] = tokenValue;
-    }
+    public Dictionary<string, string> Operators { get; set; }
 
-    public void RegisterText(string start, string end)
-    {
-        this.texts[start] = end;
-    }
+    public Dictionary<string, string> KeyWords { get; set; }
+
+    public Dictionary<string, string> Texts { get; set; }
 
     private bool MatchSymbol(TokenReader stream, List<Token> tokens)
     {
-        foreach (var op in operators.Keys.OrderByDescending(k => k.Length))
+        foreach (var op in Operators.Keys.OrderByDescending(k => k.Length))
+        {
             if (stream.Match(op))
             {
-                tokens.Add(new Token(TokenType.Symbol, operators[op], stream.Location));
+                tokens.Add(new Token(TokenType.Symbol, Operators[op], stream.Location));
                 return true;
             }
+        }
         return false;
     }
 
     private bool MatchText(TokenReader stream, List<Token> tokens, List<CompilingError> errors)
     {
-        foreach (var start in texts.Keys.OrderByDescending(k => k.Length))
+        foreach (var start in Texts.Keys.OrderByDescending(k => k.Length))
         {
             string text;
             if (stream.Match(start))
             {
-                if (!stream.ReadUntil(texts[start], out text))
-                    errors.Add(new CompilingError(stream.Location, ErrorCode.Expected, texts[start]));
+                if (!stream.ReadUntil(Texts[start], out text))
+                    errors.Add(new CompilingError(stream.Location, ErrorCode.Expected, Texts[start]));
                 tokens.Add(new Token(TokenType.Text, text, stream.Location));
                 return true;
             }
@@ -64,8 +58,8 @@ public class LexicalAnalyzer
 
             if (stream.ReadID(out value))
             {
-                if (keywords.ContainsKey(value))
-                    tokens.Add(new Token(TokenType.Keyword, keywords[value], stream.Location));
+                if (KeyWords.ContainsKey(value))
+                    tokens.Add(new Token(TokenType.Keyword, KeyWords[value], stream.Location));
                 else
                     tokens.Add(new Token(TokenType.Identifier, value, stream.Location));
                 continue;
@@ -110,6 +104,10 @@ public class LexicalAnalyzer
             this.lastLB = -1;
         }
 
+        public bool EOF => (pos >= code.Length);
+
+        public bool EOL => (EOF || code[pos] == '\n');
+
         public CodeLocation Location
         {
             get
@@ -125,20 +123,9 @@ public class LexicalAnalyzer
 
         public char Peek()
         {
-            if (pos < 0 || pos >= code.Length)
-                throw new InvalidOperationException();
+            if (pos < 0 || pos >= code.Length) throw new InvalidOperationException();
 
             return code[pos];
-        }
-
-        public bool EOF
-        {
-            get { return pos >= code.Length; }
-        }
-
-        public bool EOL
-        {
-            get { return EOF || code[pos] == '\n'; }
         }
 
         public bool ContinuesWith(string prefix)

@@ -27,7 +27,7 @@ public class Parser
 
             if (!Stream.Next()) break;
         }
-        
+
         while (Stream.LookAhead().Value == TokenValues.Card)
         {
             Card card = ParseCard(errors);
@@ -148,7 +148,7 @@ public class Parser
         }
         while(Stream.Next(TokenType.Identifier))
         {
-            card.cardElements.Add(Stream.LookAhead().Value);
+            card.Elements.Add(Stream.LookAhead().Value);
         }
         if(!Stream.Next(TokenValues.StatementSeparator))
         {
