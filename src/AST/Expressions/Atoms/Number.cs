@@ -1,13 +1,9 @@
 
 public class Number : AtomExpression
 {
-    public bool IsInt
+    public Number(double value, CodeLocation location) : base(location)
     {
-        get
-        {
-            int a;
-            return int.TryParse(Value!.ToString(), out a);
-        }
+        Value = value;
     }
 
     public override ExpressionType Type
@@ -20,24 +16,13 @@ public class Number : AtomExpression
     }
 
     public override object? Value { get; set; }
-    
-    public Number(double value, CodeLocation location) : base(location)
-    {
-        Value = value;
-    }
-    
-    public override bool CheckSemantic(Context context, Scope table, List<CompilingError> errors)
-    {
-        return true;
-    }
 
-    public override void Evaluate()
+    public bool IsInt
     {
-        
-    }
-
-    public override string ToString()
-    {
-        return String.Format("{0}",Value);
+        get
+        {
+            int a;
+            return int.TryParse(Value!.ToString(), out a);
+        }
     }
 }
