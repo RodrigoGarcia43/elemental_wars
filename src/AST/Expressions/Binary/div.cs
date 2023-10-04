@@ -1,4 +1,5 @@
-﻿public class Div : BinaryExpression
+﻿
+public class Div : BinaryExpression
 {
     public override ExpressionType Type {get; set;}
     public override object? Value {get; set;}

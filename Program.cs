@@ -50,26 +50,3 @@ else
         ring.Fight(program, program.Cards["Zuko"], program.Cards["Katara"]);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

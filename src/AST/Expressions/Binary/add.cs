@@ -1,4 +1,5 @@
-﻿public class Add : BinaryExpression
+﻿
+public class Add : BinaryExpression
 {
     public override ExpressionType Type {get; set;}
     public override object? Value {get; set;}
@@ -37,4 +38,3 @@
         return Value.ToString()!;
     }
 }
-

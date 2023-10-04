@@ -5,17 +5,15 @@ public class Parser
     {
         Stream = stream;
     }
+
     public TokenStream Stream { get; private set; }
 
     public ElementalProgram ParseProgram(List<CompilingError> errors)
     {
         ElementalProgram program = new ElementalProgram(new CodeLocation());
 
-        if (!Stream.CanLookAhead(0))
-            return program;
+        if (!Stream.CanLookAhead(0)) return program;
 
-        
-        
         while (Stream.LookAhead().Value == TokenValues.Element)
         {
             Element element = ParseElement(errors);
@@ -27,10 +25,7 @@ public class Parser
                 return program;
             }
 
-            if (!Stream.Next())
-            {
-                break;
-            }
+            if (!Stream.Next()) break;
         }
         
         while (Stream.LookAhead().Value == TokenValues.Card)
@@ -39,20 +34,18 @@ public class Parser
             program.Cards[card.Id] = card;
 
             if (!Stream.Next(TokenValues.StatementSeparator))
-                {
-                    errors.Add(new CompilingError(Stream.LookAhead().Location, ErrorCode.Expected, "; expected"));
-                    return program;
-                }
+            {
+                errors.Add(new CompilingError(Stream.LookAhead().Location, ErrorCode.Expected, "; expected"));
+                return program;
+            }
 
-            if (!Stream.Next())
-                break;
+            if (!Stream.Next()) break;
         }
         return program;
     }
 
     public Element ParseElement(List<CompilingError> errors)
     {
-        
         Element element = new Element("null", Stream.LookAhead().Location);
         
         if(!Stream.Next(TokenType.Identifier))
@@ -109,7 +102,6 @@ public class Parser
 
     public Card ParseCard(List<CompilingError> errors)
     {
-        
         Card card = new Card("null", Stream.LookAhead().Location);
 
         if(!Stream.Next(TokenType.Identifier))
@@ -170,7 +162,6 @@ public class Parser
         return card;
     }
 
-
     private Expression? ParseExpression()
     {
         return ParseExpressionLv1();
@@ -186,15 +177,11 @@ public class Parser
     private Expression? ParseExpressionLv1_(Expression? left)
     {
         Expression? exp = ParseAdd(left);
-        if(exp != null)
-        {
-            return exp;
-        }
+        if(exp != null) return exp;
+
         exp = ParseSub(left);
-        if(exp != null)
-        {
-            return exp;
-        }
+        if(exp != null) return exp;
+
         return left;
     }
 
@@ -203,43 +190,34 @@ public class Parser
         Expression? newLeft = ParseExpressionLv3();
         return ParseExpressionLv2_(newLeft);
     }
+
     private Expression? ParseExpressionLv2_(Expression? left)
     {
         Expression? exp = ParseMul(left);
-        if(exp != null)
-        {
-            return exp;
-        }
+        if(exp != null) return exp;
+
         exp = ParseDiv(left);
-        if(exp != null)
-        {
-            return exp;
-        }
+        if(exp != null) return exp;
+
         return left;
     }
 
     private Expression? ParseExpressionLv3()
     {
         Expression? exp = ParseNumber();
-        if(exp != null)
-        {
-            return exp;
-        }
+        if(exp != null) return exp;
+
         exp = ParseText();
-        if(exp != null)
-        {
-            return exp;
-        }
+        if(exp != null) return exp;
+
         return null;
     }
-
 
     private Expression? ParseAdd(Expression? left)
     {
         Add sum = new Add(Stream.LookAhead().Location);
 
-        if (left == null || !Stream.Next(TokenValues.Add))
-            return null;
+        if (left == null || !Stream.Next(TokenValues.Add)) return null;
         
         sum.Left = left;
 
@@ -258,8 +236,7 @@ public class Parser
     {
         Sub sub = new Sub(Stream.LookAhead().Location);
 
-        if (left == null || !Stream.Next(TokenValues.Sub))
-            return null;
+        if (left == null || !Stream.Next(TokenValues.Sub)) return null;
         
         sub.Left = left;
 
@@ -278,8 +255,7 @@ public class Parser
     {
         Mul mul = new Mul(Stream.LookAhead().Location);
 
-        if (left == null || !Stream.Next(TokenValues.Mul))
-            return null;
+        if (left == null || !Stream.Next(TokenValues.Mul)) return null;
         
         mul.Left = left;
 
@@ -298,8 +274,7 @@ public class Parser
     {
         Div div = new Div(Stream.LookAhead().Location);
 
-        if (left == null || !Stream.Next(TokenValues.Div))
-            return null;
+        if (left == null || !Stream.Next(TokenValues.Div)) return null;
         
         div.Left = left;
 
@@ -316,16 +291,15 @@ public class Parser
 
     private Expression? ParseNumber()
     {
-        if (!Stream.Next(TokenType.Number))
-            return null;
+        if (!Stream.Next(TokenType.Number)) return null;
+
         return new Number(double.Parse(Stream.LookAhead().Value), Stream.LookAhead().Location);
     }
 
     private Expression? ParseText()
     {
-        if (!Stream.Next(TokenType.Text))
-            return null;
+        if (!Stream.Next(TokenType.Text)) return null;
+
         return new Text(Stream.LookAhead().Value, Stream.LookAhead().Location);
     }
 }
-

@@ -48,7 +48,6 @@ public class Ring{
     private int Calculate(ElementalProgram program, string element1, string element2)
     {
         int result = 0;
-        
 
         if(program.Elements[element1].Weak.Contains(element2))
         {

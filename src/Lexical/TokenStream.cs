@@ -1,17 +1,17 @@
-
 using System.Collections;
 
 public class TokenStream : IEnumerable<Token>
 {
-    private List<Token> tokens;
-    private int position;
-    public int Position { get { return position; } }
+    List<Token> tokens;
+    int position;
 
     public TokenStream(IEnumerable<Token> tokens)
     {
         this.tokens = new List<Token>(tokens);
         position = 0;
     }
+
+    public int Position { get { return position; } }
 
     public bool End => position == tokens.Count-1;
 
@@ -24,6 +24,7 @@ public class TokenStream : IEnumerable<Token>
     {
         position -= k;
     }
+
     public bool Next()
     {
         if (position < tokens.Count - 1)
@@ -33,6 +34,7 @@ public class TokenStream : IEnumerable<Token>
 
         return position < tokens.Count;
     }
+
     public bool Next( TokenType type )
     {
         if (position < tokens.Count-1 && LookAhead(1).Type == type)
@@ -43,6 +45,7 @@ public class TokenStream : IEnumerable<Token>
 
         return false;
     }
+
     public bool Next(string value)
     {            
         if (position < tokens.Count-1 && LookAhead(1).Value == value)
@@ -75,4 +78,3 @@ public class TokenStream : IEnumerable<Token>
         return GetEnumerator();
     }
 }
-

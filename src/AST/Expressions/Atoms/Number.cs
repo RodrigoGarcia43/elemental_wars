@@ -1,3 +1,4 @@
+
 public class Number : AtomExpression
 {
     public bool IsInt
@@ -5,7 +6,7 @@ public class Number : AtomExpression
         get
         {
             int a;
-            return int.TryParse(Value.ToString(), out a);
+            return int.TryParse(Value!.ToString(), out a);
         }
     }
 

@@ -1,4 +1,5 @@
-﻿public class Sub : BinaryExpression
+﻿
+public class Sub : BinaryExpression
 {
     public override ExpressionType Type {get; set;}
     public override object? Value {get; set;}

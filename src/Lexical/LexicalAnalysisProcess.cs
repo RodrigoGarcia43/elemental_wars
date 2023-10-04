@@ -16,12 +16,11 @@ public class LexicalAnalyzer
     {
         this.keywords[keyword] = tokenValue;
     }
+
     public void RegisterText(string start, string end)
     {
         this.texts[start] = end;
     }
-
-
 
     private bool MatchSymbol(TokenReader stream, List<Token> tokens)
     {
@@ -232,6 +231,4 @@ public class LexicalAnalyzer
             return code[pos++];
         }
     }
-
 }
-

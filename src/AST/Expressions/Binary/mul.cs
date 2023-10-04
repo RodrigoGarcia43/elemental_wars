@@ -1,4 +1,5 @@
-﻿public class Mul : BinaryExpression
+﻿
+public class Mul : BinaryExpression
 {
     public override ExpressionType Type {get; set;}
     public override object? Value {get; set;}

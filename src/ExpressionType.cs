@@ -1,7 +1,8 @@
+
 public enum ExpressionType
-    {
-        Anytype,
-        Text,
-        Number,
-        ErrorType
-    }
+{
+    Anytype,
+    Text,
+    Number,
+    ErrorType
+}
