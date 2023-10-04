@@ -54,6 +54,6 @@ The game consists of cards representing elements. Each element has a set of elem
 ### Card Definition:
 
 - **Elements**: Set of elements associated with the card.
-- **Power**: Direct numeric value or result of an arithmetic operation (+, -, *, /).
+- **Power**: Direct numeric value or result of an arithmetic operation (`+`, `-`, `*`, `/`).
 
 For instance, a card might have the Water element and a power of `5 + 3`. If the Water element is weak against Fire, then no card with the Fire element can be played while the Water card is in play.
