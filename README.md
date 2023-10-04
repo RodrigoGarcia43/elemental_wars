@@ -49,11 +49,11 @@ dotnet run
 
 ## DSL Usage
 
-The game consists of cards representing elements. Each element has a set of elements it is weak to and another set it is strong against. When a card is played, it can restrict the elements that can be played on the board.
+The game consists of cards representing elements. Each element has a set of elements it is weak to and another set it is strong against. When a card is played, it can damage the opponent.
 
 ### Card Definition:
 
 - **Elements**: Set of elements associated with the card.
 - **Power**: Direct numeric value or result of an arithmetic operation (`+`, `-`, `*`, `/`).
 
-For instance, a card might have the Water element and a power of `5 + 3`. If the Water element is weak against Fire, then no card with the Fire element can be played while the Water card is in play.
+For instance, a card might have the Water element and a power of `5 + 3`. If the Water element is strong against Fire, then the damage factor of cards with Water increases by 1 when facing cards with Fire. After calculating this factor for each pair of Elements in a pair of cards, this number is multiplied by a constant and added to the card's power.

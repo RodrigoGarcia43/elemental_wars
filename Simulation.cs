@@ -1,5 +1,6 @@
 
-public class Ring{
+public class Ring 
+{
     public void Fight(ElementalProgram program, Card player1, Card player2)
     {
         double pow1 = (double)player1.Power!.Value!;
@@ -56,14 +57,6 @@ public class Ring{
         if(program.Elements[element1].Strong.Contains(element2))
         {
             result += 1;
-        }
-        if(program.Elements[element2].Weak.Contains(element1))
-        {
-            result += 1;
-        }
-        if(program.Elements[element2].Weak.Contains(element1))
-        {
-            result -= 1;
         }
 
         return result;

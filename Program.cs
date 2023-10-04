@@ -45,7 +45,6 @@ else
 
         Console.WriteLine(program);
 
-
         Ring ring = new Ring();
         ring.Fight(program, program.Cards["Zuko"], program.Cards["Katara"]);
     }
