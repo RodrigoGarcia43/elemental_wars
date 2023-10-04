@@ -1,7 +1,7 @@
 ﻿
 LexicalAnalyzer lex = Compiling.Lexical;
 
-string text = File.ReadAllText("./code");  
+string text = File.ReadAllText("./examples/code");  
 
 IEnumerable<Token> tokens = lex.GetTokens("code", text, new List<CompilingError>());
 
